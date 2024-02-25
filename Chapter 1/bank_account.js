@@ -19,7 +19,9 @@ function kurangiSaldo() // Fungsi "kurangiSaldo()" telah diimplementasikan mengg
     if(kurang != null && kurang != "" && Number.isInteger(parseInt(kurang))){
         if (parseInt(kurang) > saldo) {
             console.log("Saldo tidak mencukupi")
-            kurangiSaldo();
+            alert("Saldo Tidak Mencukupi")
+            kurangiSaldo()
+            return
         }
         saldo -= parseInt(kurang)
         console.log(saldo);
