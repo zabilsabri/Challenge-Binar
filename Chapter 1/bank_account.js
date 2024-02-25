@@ -1,8 +1,8 @@
-saldo = 0 // Variabel "saldo" telah dideklarasikan dengan nilai awal
+let saldo = 0 // Variabel "saldo" telah dideklarasikan dengan nilai awal
 
 function tambahSaldo() // Fungsi "tambahSaldo()" telah diimplementasikan menggunakan window.prompt() untuk menambahkan saldo
 {
-    tambah = window.prompt("Masukkan jumlah saldo yang ingin ditambahkan: ")
+    const tambah = window.prompt("Masukkan jumlah saldo yang ingin ditambahkan: ")
     if(tambah != null && tambah != "" && Number.isInteger(parseInt(tambah))){
         saldo += parseInt(tambah)
         console.log(saldo);
@@ -15,7 +15,7 @@ function tambahSaldo() // Fungsi "tambahSaldo()" telah diimplementasikan menggun
 
 function kurangiSaldo() // Fungsi "kurangiSaldo()" telah diimplementasikan menggunakan window.prompt() untuk mengurangi saldo
 {
-    kurang = window.prompt("Masukkan jumlah saldo yang ingin dikurangkan: ")
+    const kurang = window.prompt("Masukkan jumlah saldo yang ingin dikurangkan: ")
     if(kurang != null && kurang != "" && Number.isInteger(parseInt(kurang))){
         if (parseInt(kurang) > saldo) {
             console.log("Saldo tidak mencukupi")
