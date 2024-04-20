@@ -264,7 +264,7 @@ paths:
                   message:
                     type: string
                     example: User not found
-  /accounts/{id}:
+  /account/{id}:
     get:
       summary: Get account information by ID
       tags: ["Account"]
@@ -362,7 +362,7 @@ paths:
                 amount:
                   type: integer
                   example: 200000
-                bank_account_number:
+                bank_account_source:
                   type: string
                   example: 1
                 bank_account_destination:
