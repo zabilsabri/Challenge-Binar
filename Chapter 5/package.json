@@ -1,0 +1,25 @@
+{
+  "name": "Binar_Challenge_CH5",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon ./bin/www",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.12.1",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "jest": "^29.7.0",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^5.12.1",
+    "supertest": "^6.3.4",
+    "swagger-ui-express": "^5.0.0",
+    "yaml": "^2.4.1"
+  }
+}

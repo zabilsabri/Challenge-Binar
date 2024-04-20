@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model users {
+  id            Int       @id @default(autoincrement())
+  name          String
+  email         String    @unique
+  password      String
+  bank_accounts bank_accounts[]
+  profiles      profiles?
+
+  @@map("users")
+}
+
+model bank_accounts {
+  id                        Int       @id @default(autoincrement())
+  bank_name                 String
+  bank_account_number       String    @unique
+  balance                   Float
+  user                      users     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id                   Int
+  source                    transactions[] @relation("source")
+  destination               transactions[] @relation("destination")
+
+  @@map("bank_accounts")
+}
+
+model transactions {
+  id                        Int           @id @default(autoincrement())
+  amount                    Float
+  bank_account_source       bank_accounts @relation(name: "source", fields: [source_account_id], references: [id], onDelete: Cascade)
+  source_account_id         Int           
+  bank_account_destination  bank_accounts @relation(name: "destination", fields: [destination_account_id], references: [id], onDelete: Cascade)
+  destination_account_id    Int           
+  
+  @@map("transactions")
+}
+
+model profiles {
+  id              Int       @id @default(autoincrement())
+  user            users     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id         Int       @unique
+  identity_type   String
+  identity_number String
+  address         String    @db.Text
+
+  @@map("profiles")
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
